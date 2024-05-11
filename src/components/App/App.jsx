@@ -96,35 +96,29 @@ export default class App extends React.Component {
   };
 
   startTimer = (id, timerId) => {
-    this.setState(
-      ({ todoData }) => {
-        const idx = todoData.findIndex((el) => el.id === id);
-        const oldItem = todoData[idx];
-        const newItem = { ...oldItem, timerIsActive: true, timerId };
+    this.setState(({ todoData }) => {
+      const idx = todoData.findIndex((el) => el.id === id);
+      const oldItem = todoData[idx];
+      const newItem = { ...oldItem, timerIsActive: true, timerId };
 
-        const before = todoData.slice(0, idx);
-        const after = todoData.slice(idx + 1);
+      const before = todoData.slice(0, idx);
+      const after = todoData.slice(idx + 1);
 
-        return { todoData: [...before, newItem, ...after] };
-      },
-      () => console.log(this.state.todoData),
-    );
+      return { todoData: [...before, newItem, ...after] };
+    });
   };
 
   stopTimer = (id) => {
-    this.setState(
-      ({ todoData }) => {
-        const idx = todoData.findIndex((el) => el.id === id);
-        const oldItem = todoData[idx];
-        const newItem = { ...oldItem, timerIsActive: false, timerId: null };
+    this.setState(({ todoData }) => {
+      const idx = todoData.findIndex((el) => el.id === id);
+      const oldItem = todoData[idx];
+      const newItem = { ...oldItem, timerIsActive: false, timerId: null };
 
-        const before = todoData.slice(0, idx);
-        const after = todoData.slice(idx + 1);
+      const before = todoData.slice(0, idx);
+      const after = todoData.slice(idx + 1);
 
-        return { todoData: [...before, newItem, ...after] };
-      },
-      () => console.log(this.state.todoData),
-    );
+      return { todoData: [...before, newItem, ...after] };
+    });
   };
 
   updateTimer = (id) => {
