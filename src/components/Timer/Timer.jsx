@@ -1,6 +1,17 @@
 import React from 'react';
 
 export default class Timer extends React.Component {
+  componentDidMount() {
+    const { id, timerIsActive } = this.props;
+    if (timerIsActive) {
+      this.startTimer(id);
+    }
+  }
+
+  componentWillUnmount() {
+    this.onStopTimer();
+  }
+
   tick = () => {
     const { id, updateTimer, secondsTime } = this.props;
     if (secondsTime <= 0) {
